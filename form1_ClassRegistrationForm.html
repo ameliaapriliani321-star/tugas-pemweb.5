@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Class Registration Form</title>
+  <style>
+    :root{
+      --card-bg: #fff;
+      --page-bg: #f4f6f8;
+      --accent: #111;
+      --muted: #9aa3ad;
+      --input-border: #e6e9ec;
+      --shadow: 0 6px 20px rgba(18,24,32,0.06);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--page-bg) 0%, #fbfcfd 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:100vh;
+    }
+
+    .container{
+      width:100%;
+      max-width:420px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    h1{
+      margin:0 0 8px 0;
+      font-size:20px;
+      letter-spacing:0.1px;
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    form .row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      margin-bottom:6px;
+      color:#222;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select{
+      width:100%;
+      padding:11px 12px;
+      border-radius:8px;
+      border:1px solid var(--input-border);
+      background:#fff;
+      font-size:14px;
+      outline:none;
+      transition:box-shadow .12s, border-color .12s;
+    }
+    input:focus, select:focus{
+      box-shadow:0 4px 10px rgba(17,24,32,0.06);
+      border-color:#c7d2da;
+    }
+
+    .field{
+      margin-bottom:14px;
+    }
+
+    .full{
+      grid-column:1 / -1;
+    }
+
+    .note{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:6px;
+      margin-bottom:12px;
+    }
+
+    .days{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:6px 18px;
+      margin-top:6px;
+      margin-bottom:12px;
+    }
+
+    .checkbox-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+    }
+
+    .checkbox-row input[type="checkbox"]{
+      width:16px;
+      height:16px;
+      accent-color: #111;
+    }
+
+    .terms{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:14px 0 18px 0;
+      font-size:14px;
+      color:#222;
+    }
+
+    .btn{
+      display:inline-block;
+      width:100%;
+      text-align:center;
+      padding:12px 14px;
+      background:#111;
+      color:#fff;
+      border-radius:8px;
+      border: none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+      box-shadow: 0 6px 18px rgba(17,24,32,0.12);
+    }
+    .btn:active{transform:translateY(1px)}
+
+    /* small screens: stack name/email rows vertically */
+    @media (max-width:520px){
+      .row{ grid-template-columns:1fr; }
+    }
+
+    /* little visual footer spacing so card doesn't hug bottom */
+    .container{ padding-bottom:20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="region" aria-labelledby="form-title">
+      <h1 id="form-title">Class Registration Form</h1>
+      <div class="subtitle">Please fill out the form below to register for our class</div>
+
+      <form action="#" method="post" onsubmit="event.preventDefault(); alert('Form submitted (demo)')">
+        <div class="row">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input id="firstName" name="firstName" type="text" placeholder="First Name" required>
+          </div>
+
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" name="lastName" type="text" placeholder="Last Name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="Email Address" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="Phone Number">
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="level">Class Level</label>
+          <select id="level" name="level" required>
+            <option value="">Select your class level</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+          <div class="note">Please choose the appropriate level for your experience</div>
+        </div>
+
+        <div class="field full">
+          <label>Class Days</label>
+          <div class="note">Please select the days you are available to attend class</div>
+
+          <div class="days" aria-label="Class days">
+            <label class="checkbox-row"><input type="checkbox" name="days" value="monday"> Monday</label>
+            <label class="checkbox-row"><input type="checkbox" name="days" value="tuesday"> Tuesday</label>
+            <label class="checkbox-row"><input type="checkbox" name="days" value="wednesday"> Wednesday</label>
+            <label class="checkbox-row"><input type="checkbox" name="days" value="thursday"> Thursday</label>
+            <label class="checkbox-row"><input type="checkbox" name="days" value="friday"> Friday</label>
+            <label class="checkbox-row"><input type="checkbox" name="days" value="saturday"> Saturday</label>
+          </div>
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" id="agree" required>
+          <span>I agree to the terms and conditions of the class registration</span>
+        </label>
+
+        <button class="btn" type="submit">Register Now!</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
